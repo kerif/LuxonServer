@@ -12,6 +12,7 @@ The goal of this project is to be a drop-in replacement for the official server 
 
 
 ## Table of Contents
+- [Features](#features)
 - [Legal Disclaimer and Legal Contributing Requirements](#legal-disclaimer)
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
@@ -19,6 +20,17 @@ The goal of this project is to be a drop-in replacement for the official server 
 - [Platform Support](#platform-support)
 - [Foreign Function Interface (FFI)](#foreign-function-interface-ffi)
 - [FAQ](#faq)
+
+## Features
+
+- Runs basically anywhere (see [Platform Support](#platform-support))
+- Very easy to set up (see [Getting Started](#getting-started))
+- FFI allowing plugins, authentication providers and hosts to be written in any programming language (see [/ffi_include](/ffi_include))
+- Plugin interface that mirrors the [publicly documented](https://doc.photonengine.com/server/current/plugins/manual) Server SDK plugin interface (see [game_plugin_base.hpp](/include/luxon/server/game_plugin_base.hpp))
+- Settings database so you can configure authentication, features, etc. per app ID (see [/settings_database.md](/settings_database.md))
+- Basic performance statistics and debug web interface/API (see [/web](/web) which will be on port `5088` by default)
+- Prometheus exporter and Grafana dashboard (see [/grafana-dashboard.json](/grafana-dashboard.json))
+- Tracy integration for deeper profiling
 
 ---
 ---
@@ -90,15 +102,15 @@ In order to reliably connect to the server over the internet in the default conf
 
 There are three ways to get a build of Luxon Server: downloading a stable release, grabbing the latest CI build, or compiling it yourself. 
 
-### 1. Download a Release (Recommended)
+### A: Download a Release (Recommended)
 For most users, the easiest and most stable way to get started is to download the latest pre-compiled release.
 * [Download from GitHub Releases](https://github.com/niansa/LuxonServer/releases)
 
-### 2. Download from CI (Bleeding Edge)
+### B: Download from CI (Bleeding Edge)
 If you need the absolute latest features or bug fixes that haven't been released yet, you can download the build artifacts directly from the CI pipelines.
 * [Download from GitLab Pipelines](https://gitlab.com/luxon_project/LuxonServer/-/pipelines)
 
-### 3. Download from Debian repository
+### C: Download from Debian repository
 In case you're on Debian (any arch, oldstable/stable/unstable), you can install stable Luxon Server from the Debian repository:
 
 ```
@@ -118,7 +130,7 @@ sudo systemctl restart luxon-server.service
 
 Note that the repository is currently *unsigned* due to CI limitations I have yet to overcome. This is not normally a problem because of HTTPS. However it means that if for example the gitlab.io domain was abandoned (highly unlikely) someone could take over the repository and install malware.
 
-### 4. Build from Source
+### D: Build from Source
 If you prefer to compile the server yourself, plan to modify the code, or would like to use plugins you can build Luxon Server from source.
 
 #### Prerequisites
