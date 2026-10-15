@@ -834,7 +834,7 @@ void ServerManager::setup_http_server() {
     http_server_.emplace(*this);
     http_server_->on_create_fd =
         std::bind(&SockSelector::add_read_fd, &sock_selector_, std::placeholders::_1, [this](int fd) { http_server_->service_later(fd); });
-    http_server_->on_delete_fd = std::bind(&SockSelector::remove_read_fd, &sock_selector_, std::placeholders::_1);
+    http_server_->on_delete_fd = std::bind(&SockSelector::remove_fd, &sock_selector_, std::placeholders::_1);
     if (!http_server_->bind(http_config_->address, http_config_->port))
         log_->error("Failed to bind HTTP server to port {}! Is the port already in use?", http_config_->port);
 }
