@@ -16,7 +16,7 @@ The goal of this project is to be a drop-in replacement for the official server 
 - [Legal Disclaimer and Legal Contributing Requirements](#legal-disclaimer)
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
-- [Usage](#features)
+- [Usage](#usage)
 - [Platform Support](#platform-support)
 - [Foreign Function Interface (FFI)](#foreign-function-interface-ffi)
 - [FAQ](#faq)
@@ -164,13 +164,6 @@ For example, if your server is running on 192.168.1.56:
 ```
 
 Once this is set, the game will connect to Luxon Server thinking it is the official cloud.
-
-## Features
-
-* **Load Balancing Logic:** Full implementation of the Name/Master/Game server flow.
-* **Web Dashboard:** An embedded HTTP server (default port 5088) provides a real-time monitor. It shows active connections, packet loss, round-trip times, and a visual graph of server load/busy time at path `/stats`.
-* **Peer Persistence:** Handles player authentication tokens and state transfer between Master and Game servers.
-* **Plugin System (Optional):** If you need custom server-side logic, Luxon supports plugins written in C++. This is disabled by default in CMake (LUXON_SERVER_ENABLE_PLUGINS=OFF) to keep the build lightweight, strictly single-threaded.
 
 ## Platform Support
 
